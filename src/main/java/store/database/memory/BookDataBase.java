@@ -1,13 +1,14 @@
-package store.database;
+package store.database.memory;
 
 import org.springframework.stereotype.Component;
+import store.database.IBookDAO;
 import store.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BookDataBase {
+public class BookDataBase implements IBookDAO {
     private List<Book> books = new ArrayList<>();
 
     public BookDataBase() {

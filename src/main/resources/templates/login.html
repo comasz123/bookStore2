@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/form.css">
+    <script src="/validation.js"> </script>
     <title>Bookstore</title>
 </head>
 <body>
-<a href="/main" id="logo">
-    <img src="/logo.png">
-</a>
 
-<div id="menu">
-    <a href="/main">Strona Główna</a>
-    <a href="/contact">Kontakt</a>
-    <a href="/login">Login</a>
-</div>
+<div th:replace="fragments.html::logo"></div>
+
+<div th:replace="fragments.html::menu"></div>
+
 <div id="content">
-    <form method="post">
-        <input type="text" placeholder="Login" th:field="*{user.login}">
-        <input type="password" placeholder="Hasło" th:field="*{user.password}">
+    <form method="post" onsubmit="return validateLoginForm()">
+<!--        jeżeli zwróci false formularz nie jest wysyłany -->
+        <input type="text" placeholder="Login" th:field="*{userModel.login}" id="login">
+        <input type="password" placeholder="Hasło" th:field="*{userModel.password}" id="password">
         <input type="submit" placeholder="Wyślij">
     </form>
+    <a href="/register">Zarejestruj</a>
 </div>
 
 </body>
